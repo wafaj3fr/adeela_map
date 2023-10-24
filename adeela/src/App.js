@@ -1,23 +1,72 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import ImageWithButton from './ImageWithButton';
 import './App.scss';
 
 function App() {
+  const [modal, setModal] = useState(false);
+  const [carouselModal, setCarouselModal] = useState(false);
+  
+  const carouselz = () => {
+    setCarouselModal(!carouselModal);
+  };
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <button onClick={toggleModal} className="btn-modal x">
+        2019
+      </button>
+
+      {modal && (
+        <div className="modal">
+          <div className="overlay" onClick={toggleModal}></div>
+          <div className="modal-content x">
+            <div className="image-with-button">
+              <img src={require('./sd-02.png')} alt="" />
+              <button className='btnx round-button' onClick={toggleModal}>Click me!</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <button onClick={toggleModal} className="btn-modal y">
+        2020
+      </button>
+
+      {modal && (
+        <div className="modal">
+          <div className="overlay" onClick={toggleModal}></div>
+          <div className="modal-content y">
+            <ImageWithButton
+              className='imgy'
+              imageSrc={require('./sd-02.png')}
+              buttonText="Click me!"
+              onClick={carouselz}
+            />
+          </div>
+        </div>
+      )}
+
+
+      <button onClick={toggleModal} className="btn-modal z">
+        2021
+      </button>
+
+      {modal && (
+        <div className="modal">
+          <div className="overlay" onClick={toggleModal}></div>
+          <div className="modal-content z">
+            <ImageWithButton
+              className='imgz'
+              imageSrc={require('./sd-02.png')}
+              onClick={carouselz}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
