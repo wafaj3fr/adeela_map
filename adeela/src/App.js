@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
-import ImageWithButton from './ImageWithButton';
+import {Carousel} from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
+// import ImageWithButton from './ImageWithButton';
 import './App.scss';
 
 function App() {
   const [modal, setModal] = useState(false);
   const [carouselModal, setCarouselModal] = useState(false);
 
-  const carouselz = () => {
-    setCarouselModal(!carouselModal);
+  const openCarousel = () => {
+    setCarouselModal(true);
+  };
+
+  const closeCarousel = () => {
+    setCarouselModal(false);
   };
 
   const toggleModal = () => {
@@ -24,31 +31,38 @@ function App() {
         <div className="modal">
           <div className="overlay" onClick={toggleModal}></div>
           <div className="modal-content x">
-            <div className="image-with-button">
-              <img src={require('./sd-02.png')} alt="" />
-              <button
+            <div className="modal-carousel">
+              <button style={{background: 'url(./sd-02.png)'}}
                 className='btnx round-button'
-                onClick={carouselz}
+                onClick={openCarousel}
               >
-                Click me!
+                Open Carousel
               </button>
-            </div>
-          </div>
-        </div>
-      )}
 
-      {carouselModal && (
-        <div className="carouselModal" style={{ zIndex: 2 }}>
-          <div className="overlay" onClick={carouselz}></div>
+        {carouselModal && (
+        <div className="carouselModal">
+          <div className="overlay" onClick={closeCarousel}></div>
           <div className="modal-content x">
+            <h2>
+              Carousel
+            </h2>
             <div className="image-with-button">
-              <button onClick={carouselz}>Close</button>
+              <button onClick={closeCarousel}>Close</button>
+              <Carousel showThumbs={false}>
+                <div>
+                  <img src='sd-02.png' alt='logo' />
+                </div>
+              </Carousel>
+            </div>
+          </div>
+        </div>
+      )}
             </div>
           </div>
         </div>
       )}
 
-      <button onClick={toggleModal} className="btn-modal y">
+      {/* <button onClick={toggleModal} className="btn-modal y">
         2020
       </button>
 
@@ -60,7 +74,7 @@ function App() {
               className='imgy'
               imageSrc={require('./sd-02.png')}
               buttonText="Click me!"
-              onClick={carouselz}
+              onClick={closeCarousel}
             />
           </div>
         </div>
@@ -77,11 +91,11 @@ function App() {
             <ImageWithButton
               className='imgz'
               imageSrc={require('./sd-02.png')}
-              onClick={carouselz}
+              onClick={closeCarousel}
             />
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

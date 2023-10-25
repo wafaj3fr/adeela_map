@@ -52,14 +52,6 @@ body.active-modal {
   border-radius: 3px;
   max-width: 600px;
   min-width: 300px;
-  .btnx {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-  }
-  
-
-  
 }
 
 .close-modal {
@@ -72,4 +64,10 @@ body.active-modal {
   cursor: pointer;
   text-decoration: underline;
   color: #337CCF;
+}
+
+.round-button {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
 }
