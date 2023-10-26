@@ -2,91 +2,79 @@ import React, { useState } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './App.scss';
 import ActiveMap from './map';
+import ActiveMapTwo from './map20';
+import ActiveMapThree from './map21';
 
 function App() {
   const [modal, setModal] = useState(false);
 
-  const toggleModal = () => {
+  const [modalTwo, setModalTwo] = useState(false);
+  const [modalThree, setModalThree] = useState(false);
+
+  const toggleModalOne = () => {
     setModal(!modal);
   };
 
+  const toggleModalTwo = () => {
+    setModalTwo(!modalTwo);
+  };
+
+  const toggleModalThree = () => {
+    setModalThree(!modalThree);
+  };
+
+
   return (
     <div className="app-container">
-      <button onClick={toggleModal} className="btn-modal x">
+      <button onClick={toggleModalOne} className="btn-modal x">
         2019
       </button>
 
       {modal && (
         <div className="modal">
-          <div className="overlay" onClick={toggleModal}></div>
+          <div className="overlay" onClick={toggleModalOne}></div>
           <div className="modal-content x">
             <div className="modal-carousel">
               <ActiveMap />
               
-
-        {/* {carouselModal && (
-        <div className="carouselModal">
-          <div className="overlay" onClick={closeCarousel}></div>
-          <div className="modal-content x">
-            <h2>
-              Carousel
-            </h2>
-            <div className="image-with-button">
-              <button onClick={closeCarousel}>Close</button>
-              <Carousel showThumbs={false}>
-                <div>
-               
-                </div>
-              </Carousel>
             </div>
           </div>
-        </div>
-      )} */}
-            </div>
-          </div>
-          {/* <div>
-                <button onClick={toggleModal}>
-                  X
-                </button>
-          </div> */}
+     
         </div>
         
       )}
 
-      {/* <button onClick={toggleModal} className="btn-modal y">
+      <button onClick={toggleModalTwo} className="btn-modal y">
         2020
       </button>
 
-      {modal && (
-        <div className="modal" style={{ zIndex: 1 }}>
-          <div className="overlay" onClick={toggleModal}></div>
+      {modalTwo && (
+        <div className="modal">
+          <div className="overlay" onClick={toggleModalTwo}></div>
           <div className="modal-content y">
-            <ImageWithButton
-              className='imgy'
-              imageSrc={require('./sd-02.png')}
-              buttonText="Click me!"
-              onClick={closeCarousel}
-            />
+            <div className="modal-carousel">
+                <ActiveMapTwo />
+                
+              </div>
           </div>
         </div>
       )}
 
-      <button onClick={toggleModal} className="btn-modal z">
+      <button onClick={toggleModalThree} className="btn-modal z">
         2021
       </button>
 
-      {modal && (
-        <div className="modal" style={{ zIndex: 1 }}>
-          <div className="overlay" onClick={toggleModal}></div>
+      {modalThree && (
+        <div className="modal">
+          <div className="overlay" onClick={toggleModalThree}></div>
           <div className="modal-content z">
-            <ImageWithButton
-              className='imgz'
-              imageSrc={require('./sd-02.png')}
-              onClick={closeCarousel}
-            />
+            <div className="modal-carousel">
+                <ActiveMapThree />
+                
+              </div>
           </div>
         </div>
-      )} */}
+      )}
     </div>
   );
 }
