@@ -1,21 +1,10 @@
 import React, { useState } from 'react';
-import {Carousel} from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-
-// import ImageWithButton from './ImageWithButton';
 import './App.scss';
+import ActiveMap from './map';
 
 function App() {
   const [modal, setModal] = useState(false);
-  const [carouselModal, setCarouselModal] = useState(false);
-
-  const openCarousel = () => {
-    setCarouselModal(true);
-  };
-
-  const closeCarousel = () => {
-    setCarouselModal(false);
-  };
 
   const toggleModal = () => {
     setModal(!modal);
@@ -32,14 +21,10 @@ function App() {
           <div className="overlay" onClick={toggleModal}></div>
           <div className="modal-content x">
             <div className="modal-carousel">
-              <button style={{background: 'url(./sd-02.png)'}}
-                className='btnx round-button'
-                onClick={openCarousel}
-              >
-                Open Carousel
-              </button>
+              <ActiveMap />
+              
 
-        {carouselModal && (
+        {/* {carouselModal && (
         <div className="carouselModal">
           <div className="overlay" onClick={closeCarousel}></div>
           <div className="modal-content x">
@@ -50,16 +35,22 @@ function App() {
               <button onClick={closeCarousel}>Close</button>
               <Carousel showThumbs={false}>
                 <div>
-                  <img src='sd-02.png' alt='logo' />
+               
                 </div>
               </Carousel>
             </div>
           </div>
         </div>
-      )}
+      )} */}
             </div>
           </div>
+          {/* <div>
+                <button onClick={toggleModal}>
+                  X
+                </button>
+          </div> */}
         </div>
+        
       )}
 
       {/* <button onClick={toggleModal} className="btn-modal y">
